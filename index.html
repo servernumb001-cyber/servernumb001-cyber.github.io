@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Owen Levi Ezinkwo — Cybersecurity & Software Engineer</title>
+<meta name="description" content="Owen Levi Ezinkwo — cybersecurity engineer and full-stack developer based in Nigeria. Vulnerability assessments, private cloud infrastructure, and secure web applications." />
+<meta name="author" content="Owen Levi Ezinkwo" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0b'/><text y='68' x='50' text-anchor='middle' font-size='52' font-family='monospace' fill='%234ade80'>O</text></svg>" />
+<style>
+  :root {
+    --bg: #08080a; --surface: #101014; --surface-2: #16161b; --border: #23232b;
+    --text: #e9e9ec; --muted: #8d8d99; --accent: #4ade80; --accent-dim: #4ade8022;
+    --radius: 12px; --max: 1080px;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --bg:#ffffff; --surface:#f7f8f8; --surface-2:#f0f2f1; --border:#e2e5e3;
+      --text:#0d0f0e; --muted:#6b7280; --accent:#047857; --accent-dim:#04785715; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--text);
+    line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+  header { position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav { display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding: 1rem 0; flex-wrap: wrap; }
+  .logo { font-family: var(--mono); font-size: 0.9rem; font-weight: 600;
+    color: var(--text); letter-spacing: -0.02em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.9rem; }
+  .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .hero { position: relative; padding: 7rem 0 6rem;
+    border-bottom: 1px solid var(--border); overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+    opacity: 0.5; pointer-events: none; }
+  .hero .container { position: relative; }
+  .status { display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.78rem; color: var(--accent);
+    background: var(--accent-dim); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    padding: 0.3rem 0.7rem; border-radius: 999px; margin-bottom: 1.75rem; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  h1 { font-size: clamp(2.3rem, 6.5vw, 4rem); line-height: 1.06;
+    letter-spacing: -0.035em; font-weight: 700; margin-bottom: 1.25rem; max-width: 16ch; }
+  .hero .subtitle { font-size: clamp(1.05rem, 2.2vw, 1.25rem); color: var(--muted);
+    max-width: 58ch; margin-bottom: 2.25rem; }
+  .hero .subtitle strong { color: var(--text); font-weight: 600; }
+  .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn { display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.92rem; font-weight: 600;
+    border: 1px solid transparent; transition: all 0.18s ease; cursor: pointer;
+    font-family: inherit; }
+  .btn:hover { transform: translateY(-2px); text-decoration: none; }
+  .btn-primary { background: var(--accent); color: #04120a; }
+  .btn-primary:hover { box-shadow: 0 8px 24px -6px var(--accent); }
+  .btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; }
+  .stat { background: var(--bg); padding: 1.4rem 1.25rem; }
+  .stat .num { font-family: var(--mono); font-size: 1.6rem; font-weight: 700;
+    color: var(--accent); letter-spacing: -0.02em; line-height: 1.2; }
+  .stat .label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-top: 0.35rem; }
+  section { padding: 5.5rem 0; }
+  section + section { border-top: 1px solid var(--border); }
+  .eyebrow { font-family: var(--mono); font-size: 0.76rem; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--accent); margin-bottom: 0.75rem; }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); letter-spacing: -0.025em;
+    font-weight: 700; margin-bottom: 1rem; }
+  .lede { color: var(--muted); max-width: 62ch; margin-bottom: 3rem; }
+  .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.5rem; align-items: start; }
+  .about-grid p + p { margin-top: 1.1rem; }
+  .about-grid p { color: var(--muted); }
+  .about-grid p strong { color: var(--text); font-weight: 600; }
+  .facts { background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem; }
+  .facts h3 { font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); margin-bottom: 1.1rem; }
+  .facts dl { display: grid; gap: 0.9rem; }
+  .facts dt { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .facts dd { font-size: 0.92rem; color: var(--text); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .skill-card { background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.5rem;
+    transition: border-color 0.2s ease, transform 0.2s ease; }
+  .skill-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); transform: translateY(-3px); }
+  .skill-card h3 { font-size: 0.95rem; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem; }
+  .skill-card h3::before { content: ""; width: 3px; height: 15px;
+    background: var(--accent); border-radius: 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .chip { font-family: var(--mono); font-size: 0.75rem; padding: 0.3rem 0.65rem;
+    border-radius: 6px; background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--muted); }
+  .timeline { display: grid; gap: 0; }
+  .entry { display: grid; grid-template-columns: 180px 1fr; gap: 2rem;
+    padding: 1.75rem 0; border-top: 1px solid var(--border); }
+  .entry:last-child { border-bottom: 1px solid var(--border); }
+  .entry .when { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); padding-top: 0.2rem; }
+  .entry h3 { font-size: 1.05rem; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
+  .entry .role { color: var(--accent); font-size: 0.88rem; margin-bottom: 0.6rem; font-weight: 500; }
+  .entry p { color: var(--muted); font-size: 0.94rem; max-width: 65ch; }
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .project { background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.75rem; display: flex;
+    flex-direction: column; gap: 0.85rem;
+    transition: border-color 0.2s ease, transform 0.2s ease; }
+  .project:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); transform: translateY(-3px); }
+  .project h3 { font-size: 1.1rem; letter-spacing: -0.015em; }
+  .project p { color: var(--muted); font-size: 0.93rem; flex: 1; }
+  .project .link { font-size: 0.85rem; font-weight: 600;
+    display: inline-flex; align-items: center; gap: 0.35rem; }
+  .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+  .cert { display: flex; gap: 1rem; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1.4rem; }
+  .cert .badge { flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent-dim); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    display: grid; place-items: center; font-size: 1rem; }
+  .cert h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+  .cert p { font-size: 0.83rem; color: var(--muted); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .contact-list { display: grid; gap: 0.75rem; }
+  .contact-item { display: flex; align-items: center; gap: 0.85rem;
+    padding: 1rem 1.15rem; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; color: var(--text);
+    transition: border-color 0.2s ease, transform 0.2s ease; }
+  .contact-item:hover { border-color: var(--accent); text-decoration: none; transform: translateX(3px); }
+  .contact-item .ico { font-size: 1rem; width: 20px; text-align: center; }
+  .contact-item .meta { display: grid; }
+  .contact-item .k { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-item .v { font-size: 0.9rem; }
+  form { display: grid; gap: 1rem; }
+  label { display: block; font-size: 0.78rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+  input, textarea { width: 100%; padding: 0.8rem 1rem; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    font: inherit; font-size: 0.92rem; }
+  input:focus, textarea:focus { outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim); }
+  textarea { min-height: 130px; resize: vertical; }
+  footer { border-top: 1px solid var(--border); padding: 2.5rem 0;
+    font-size: 0.85rem; color: var(--muted); }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center;
+    gap: 1rem; flex-wrap: wrap; }
+  .footer-inner a { color: var(--muted); }
+  .footer-inner a:hover { color: var(--accent); }
+  @media (max-width: 900px) {
+    .about-grid, .contact-grid, .projects { grid-template-columns: 1fr; }
+    .about-grid, .contact-grid { gap: 2.5rem; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    section { padding: 4rem 0; }
+    .hero { padding: 5rem 0 4rem; }
+    .entry { grid-template-columns: 1fr; gap: 0.5rem; }
+    .nav-links { gap: 1rem; font-size: 0.85rem; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat { padding: 1.1rem 1rem; }
+    .stat .num { font-size: 1.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#top">owen<span>@</span>ezinkwo:~$</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="container">
+      <div class="status"><span class="dot"></span> Available for freelance &amp; contract work</div>
+      <h1>Owen Levi Ezinkwo</h1>
+      <p class="subtitle">
+        <strong>Cybersecurity engineer and full-stack developer</strong> based in Nigeria.
+        I find what's broken in a system, then build the secure version of it —
+        from vulnerability assessments and hardened private cloud infrastructure
+        to production web applications.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#work">View my work</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">3+</div><div class="label">Years freelance</div></div>
+        <div class="stat"><div class="num">2028</div><div class="label">BSc Cybersecurity</div></div>
+        <div class="stat"><div class="num">2</div><div class="label">Certifications</div></div>
+        <div class="stat"><div class="num">6+</div><div class="label">Core technologies</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <p class="eyebrow">01 — About</p>
+      <h2>Security-first, end to end</h2>
+      <div class="about-grid">
+        <div>
+          <p>I'm Owen Levi Ezinkwo, a cybersecurity engineer and developer studying
+            <strong>BSc Cybersecurity at the Air Force Institute of Technology</strong>
+            (expected 2028). For the past three years I've worked freelance with
+            businesses and individuals who needed their systems checked, hardened,
+            or rebuilt properly.</p>
+          <p>My work sits in an unusual spot: I assess systems as an attacker would,
+            then implement the fixes as an engineer would. That means vulnerability
+            assessments and reporting on one project, and a hardened private cloud
+            deployment or a secure web application on the next.</p>
+          <p><strong>Python is my strongest language</strong>, and I use it for tooling,
+            automation, and backend services. I build frontends with React and
+            JavaScript, work in Java, and write Solidity when a project involves
+            smart contracts. I hold certifications in Cybersecurity and in
+            Cloud Computing / DevOps.</p>
+          <p>I care about systems that hold up under scrutiny — clear audit trails,
+            proper access control, and infrastructure that doesn't fall over the
+            first time someone pushes on it.</p>
+        </div>
+        <aside class="facts">
+          <h3>// Quick facts</h3>
+          <dl>
+            <div><dt>Location</dt><dd>Nigeria</dd></div>
+            <div><dt>Focus</dt><dd>Cybersecurity &amp; secure software</dd></div>
+            <div><dt>Education</dt><dd>BSc Cybersecurity, AFIT — 2028</dd></div>
+            <div><dt>Availability</dt><dd>Freelance &amp; contract</dd></div>
+            <div><dt>Languages</dt><dd>English</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <p class="eyebrow">02 — Capabilities</p>
+      <h2>What I work with</h2>
+      <p class="lede">Grouped by where they show up in a project — from initial assessment through to deployed, monitored infrastructure.</p>
+      <div class="skills-grid">
+        <div class="skill-card"><h3>Security</h3><div class="chips">
+          <span class="chip">Vulnerability Assessment</span>
+          <span class="chip">Penetration Testing</span>
+          <span class="chip">Hardening</span>
+          <span class="chip">SSH / Key Auth</span>
+          <span class="chip">Fail2Ban</span>
+          <span class="chip">Access Control</span>
+        </div></div>
+        <div class="skill-card"><h3>Languages</h3><div class="chips">
+          <span class="chip">Python</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Java</span>
+          <span class="chip">Solidity</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Bash</span>
+        </div></div>
+        <div class="skill-card"><h3>Web &amp; Frontend</h3><div class="chips">
+          <span class="chip">React</span>
+          <span class="chip">HTML / CSS</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Responsive Design</span>
+          <span class="chip">Accessibility</span>
+        </div></div>
+        <div class="skill-card"><h3>Cloud &amp; DevOps</h3><div class="chips">
+          <span class="chip">Docker</span>
+          <span class="chip">Private Cloud</span>
+          <span class="chip">Linux Admin</span>
+          <span class="chip">CI / CD</span>
+          <span class="chip">Server Hardening</span>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <p class="eyebrow">03 — Experience</p>
+      <h2>Where I've done the work</h2>
+      <p class="lede">Three years of independent work across security assessment, infrastructure, and application development.</p>
+      <div class="timeline">
+        <article class="entry">
+          <div class="when">2023 — Present</div>
+          <div>
+            <h3>Independent Cybersecurity &amp; Software Consultant</h3>
+            <p class="role">Freelance · Remote</p>
+            <p>Delivered security assessments and technical builds for businesses and
+              individual clients. Work spanned vulnerability assessments of live
+              company websites, development of internal cybersecurity tooling, private
+              cloud deployments, and full client website builds.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Ongoing</div>
+          <div>
+            <h3>Security Assessments</h3>
+            <p class="role">Web application &amp; infrastructure review</p>
+            <p>Performed vulnerability assessments on company websites, identifying
+              exploitable weaknesses and delivering prioritised, actionable
+              remediation guidance rather than raw scanner output.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Ongoing</div>
+          <div>
+            <h3>Private Cloud &amp; Infrastructure</h3>
+            <p class="role">Deployment and hardening</p>
+            <p>Designed and deployed private cloud setups for clients, including Linux
+              server administration, containerised services, and hardened remote
+              access using key-based authentication and intrusion prevention.</p>
+          </div>
+        </article>
+        <article class="entry">
+          <div class="when">Ongoing</div>
+          <div>
+            <h3>Application Development</h3>
+            <p class="role">Client websites &amp; custom tooling</p>
+            <p>Built and delivered client-facing websites and custom internal tools,
+              handling everything from frontend implementation to backend services
+              and deployment.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <p class="eyebrow">04 — Selected work</p>
+      <h2>Projects</h2>
+      <p class="lede">A sample of the kind of work I take on. <!-- EDIT: replace with real projects --></p>
+      <div class="projects">
+        <article class="project">
+          <h3>Website Vulnerability Assessment</h3>
+          <p>Full security review of a live company website — identified exploitable
+            weaknesses and delivered a prioritised remediation report the client
+            could act on immediately.</p>
+          <div class="chips"><span class="chip">Security</span><span class="chip">Web</span></div>
+          <a class="link" href="#">Case study →</a>
+        </article>
+        <article class="project">
+          <h3>Private Cloud Deployment</h3>
+          <p>Designed and deployed a private cloud environment for a client,
+            including Linux server setup, containerised services, and hardened
+            remote access with key-only authentication.</p>
+          <div class="chips"><span class="chip">Docker</span><span class="chip">Linux</span><span class="chip">DevOps</span></div>
+          <a class="link" href="#">Case study →</a>
+        </article>
+        <article class="project">
+          <h3>Cybersecurity Tooling</h3>
+          <p>Built internal security tooling in Python to automate recurring
+            assessment tasks, reducing manual review time and producing consistent,
+            repeatable results.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">Automation</span></div>
+          <a class="link" href="#">Case study →</a>
+        </article>
+        <article class="project">
+          <h3>Client Web Application</h3>
+          <p>End-to-end build of a client website — responsive frontend, backend
+            services, and deployment — delivered with security considerations
+            built in from the start rather than bolted on.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">JavaScript</span></div>
+          <a class="link" href="#">Case study →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="container">
+      <p class="eyebrow">05 — Credentials</p>
+      <h2>Certifications &amp; education</h2>
+      <div class="certs">
+        <div class="cert"><div class="badge">🛡️</div>
+          <div><h3>Cybersecurity Certification</h3><p>Movalue</p></div></div>
+        <div class="cert"><div class="badge">☁️</div>
+          <div><h3>Cloud Computing &amp; DevOps Certification</h3><p>Tech Crush Academy</p></div></div>
+        <div class="cert"><div class="badge">🎓</div>
+          <div><h3>BSc Cybersecurity</h3><p>Air Force Institute of Technology · Expected 2028</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <p class="eyebrow">06 — Contact</p>
+      <h2>Let's work together</h2>
+      <p class="lede">Whether you need a security review, infrastructure set up properly, or an application built — send me a message and I'll get back to you.</p>
+      <div class="contact-grid">
+        <div class="contact-list">
+          <a class="contact-item" href="mailto:owenlevi92@gmail.com">
+            <span class="ico">✉️</span>
+            <span class="meta"><span class="k">Email</span><span class="v">owenlevi92@gmail.com</span></span>
+          </a>
+          <a class="contact-item" href="tel:+2349137407888">
+            <span class="ico">📱</span>
+            <span class="meta"><span class="k">Phone</span><span class="v">+234 913 740 7888</span></span>
+          </a>
+          <a class="contact-item" href="https://github.com/servernumb001-cyber" target="_blank" rel="noopener">
+            <span class="ico">💻</span>
+            <span class="meta"><span class="k">GitHub</span><span class="v">servernumb001-cyber</span></span>
+          </a>
+        </div>
+        <div>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div><label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name" /></div>
+            <div><label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" /></div>
+            <div><label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea></div>
+            <button class="btn btn-primary" type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Owen Levi Ezinkwo</span>
+    <span>Built with plain HTML &amp; CSS</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
